@@ -1,0 +1,23 @@
+{
+  "name": "scc-api-node",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "get:rules": "node ./scripts/rules/get-rules",
+    "get:profiles": "node ./scripts/profiles/get-profiles",
+    "get:profileDetails": "node ./scripts/profiles/get-profile-details ./output/get-profile-details.json"
+  },
+  "engines": {
+    "node": "^18.x",
+    "npm": "^9.x"
+  },
+  "dependencies": {
+    "got": "11.8.5",
+    "lodash": "^4.17.21",
+    "uuid": "^8.3.2",
+    "querystring": "^0.2.1"
+  },
+  "contributor": [
+    "Ashwini Chandrase"
+  ]
+}
