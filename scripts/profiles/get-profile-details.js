@@ -131,13 +131,6 @@ const getProfileDetails = async () => {
                                         assessmentParameter.parameter_default_value = get(parameter, 'parameter_default_value', 0);
                                     }
                                 });
-                                // const parameter = filter(defaultParameters, { parameter_name: get(assessment, 'parameters[0].parameter_name', null) });
-                                // if (isEmpty(parameter)) {
-                                //     console.log('ERROR: Missing parameter');
-                                // } else {
-                                //     // ideally 1 parameter per assessment need this will handle more than 1
-                                //     assessment.parameters[0].parameter_default_value = get(parameter, '[0].parameter_default_value');
-                                // }
                             }
                         });
 
