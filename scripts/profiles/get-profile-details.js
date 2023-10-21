@@ -9,7 +9,7 @@ let converter = require('json-2-csv');
 // common util
 
 const common = require('../../helpers/common');
-const { isEmpty, flatten, map, uniqBy, size, filter, get, find, keys, mapKeys } = require('lodash');
+const { isEmpty, flatten, map, uniqBy, size, filter, get, find, keys, mapKeys, isEqual } = require('lodash');
 
 // environment variables
 const apiKey = process.env['IAM_API_KEY'];
@@ -101,14 +101,20 @@ const getProfileDetails = async () => {
                         const defaultParameters = profileData.default_parameters;
 
                         map(defaultParameters, (parameter) => {
-                            const assessment = filter(uniqueAssessments, { assessment_id: parameter.assessment_id });
-                            if (isEmpty(assessment)) {
+                            const assessments = filter(uniqueAssessments, { assessment_id: parameter.assessment_id });
+                            if (isEmpty(assessments)) {
                                 console.log('ERROR: Missing assessment');
                             } else {
-                                parameter.component_id = get(assessment, '[0].component_id');
-                                parameter.component_name = get(assessment, '[0].component_name');
-                                parameter.assessment_description = get(assessment, '[0].assessment_description');
-                                parameter.assessment_type = get(assessment, '[0].assessment_type');
+                                // ideally 1 parameter per assessment but this will handle more than 1
+                                map(assessments, (assessment) => {
+                                    if (isEqual(parameter.parameter_name, assessment.parameter_name)) {
+                                        parameter.component_id = get(assessment, 'component_id', null);
+                                        parameter.component_name = get(assessment, 'component_name', null);
+                                        parameter.assessment_description = get(assessment, 'assessment_description', null);
+                                        parameter.assessment_type = get(assessment, 'assessment_type', null);
+                                    }
+                                });
+
                             }
                         });
 
@@ -116,12 +122,22 @@ const getProfileDetails = async () => {
                         map(uniqueAssessments, (assessment) => {
                             delete assessment.control_details;
                             if (!isEmpty(assessment.parameters)) {
-                                const parameter = filter(defaultParameters, { parameter_name: get(assessment, 'parameters[0].parameter_name', null) });
-                                if (isEmpty(parameter)) {
-                                    console.log('ERROR: Missing parameter');
-                                } else {
-                                    assessment.parameters[0].parameter_default_value = get(parameter, '[0].parameter_default_value');
-                                }
+                                map(assessment.parameters, (assessmentParameter) => {
+                                    const parameter = filter(defaultParameters, { parameter_name: get(assessmentParameter, 'parameter_name', null) });
+                                    if (isEmpty(parameter)) {
+                                        console.log('ERROR: Missing parameter');
+                                    } else {
+                                        // ideally 1 parameter per assessment need this will handle more than 1
+                                        assessmentParameter.parameter_default_value = get(parameter, 'parameter_default_value', 0);
+                                    }
+                                });
+                                // const parameter = filter(defaultParameters, { parameter_name: get(assessment, 'parameters[0].parameter_name', null) });
+                                // if (isEmpty(parameter)) {
+                                //     console.log('ERROR: Missing parameter');
+                                // } else {
+                                //     // ideally 1 parameter per assessment need this will handle more than 1
+                                //     assessment.parameters[0].parameter_default_value = get(parameter, '[0].parameter_default_value');
+                                // }
                             }
                         });
 
