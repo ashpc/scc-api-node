@@ -24,16 +24,16 @@ const getRules = async (startToken) => {
     let rulesUrl = `${sccBaseURL}/rules?limit=200`;
 
     // get based on type provided
-    if (rulesType === 'user_defined') {
+    if (rulesType === 'custom') {
         rulesUrl += `&type=user_defined`
-    } else if (rulesType === 'system_defined') {
+    } else if (rulesType === 'predefined') {
         rulesUrl += `&type=system_defined`
     }
 
 
-    if (!isEqual(rulesType, 'all') && !isEqual(rulesType, 'user_defined') && !isEqual(rulesType, 'system_defined')) {
-        console.log('ERROR: Unsupported rule type was provided.Please use one of these "user_defined" or "system_defined" or "all"');
-        return { error: 'Unsupported rule type was provided. Please use one of these "user_defined" or "system_defined" or "all" ' };
+    if (!isEqual(rulesType, 'all') && !isEqual(rulesType, 'custom') && !isEqual(rulesType, 'predefined')) {
+        console.log('ERROR: Unsupported rule type was provided.Please use one of these "custom" or "predefined" or "all"');
+        return { error: 'Unsupported rule type was provided. Please use one of these "custom" or "predefined" or "all" ' };
     }
 
 

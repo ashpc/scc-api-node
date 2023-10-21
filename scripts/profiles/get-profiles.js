@@ -24,16 +24,16 @@ const getProfiles = async (startToken) => {
     let profilesUrl = `${sccBaseURL}/profiles?limit=200`;
 
     // get based on type provided
-    if (profilesType === 'user_defined') {
+    if (profilesType === 'custom') {
         profilesUrl += `&profile_type=custom`
-    } else if (profilesType === 'system_defined') {
+    } else if (profilesType === 'predefined') {
         profilesUrl += `&profile_type=predefined`
     }
 
 
-    if (!isEqual(profilesType, 'all') && !isEqual(profilesType, 'user_defined') && !isEqual(profilesType, 'system_defined')) {
-        console.log('ERROR: Unsupported rule type was provided.Please use one of these "user_defined" or "system_defined" or "all"');
-        return { error: 'Unsupported rule type was provided. Please use one of these "user_defined" or "system_defined" or "all" ' };
+    if (!isEqual(profilesType, 'all') && !isEqual(profilesType, 'custom') && !isEqual(profilesType, 'predefined')) {
+        console.log('ERROR: Unsupported rule type was provided.Please use one of these "custom" or "predefined" or "all"');
+        return { error: 'Unsupported rule type was provided. Please use one of these "custom" or "predefined" or "all" ' };
     }
 
 

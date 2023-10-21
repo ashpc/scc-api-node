@@ -16,15 +16,15 @@ This repo will have scripts to get entities using the SCC APIs that can be found
 **Steps to get Rules are listed below**
 
 - To get list of all rules in the instance run `npm run get:rules`. The output is stored in the `output` folder under this name `get-all-rules.json`
-- To get list of all predefined rules in the instance run `npm run get:rules --rule_type=system_defined`.  The output is stored in the `output` folder under this name `get-system-defined-rules.json`
-- To get list of all custom rules in the instance run `npm run get:rules --rule_type=user_defined`.  The output is stored in the `output` folder under this name `get-user-defined-rules.json`
+- To get list of all predefined rules in the instance run `npm run get:rules --rule_type=predefined`.  The output is stored in the `output` folder under this name `get-predefined-rules.json`
+- To get list of all custom rules in the instance run `npm run get:rules --rule_type=custom`.  The output is stored in the `output` folder under this name `get-custom-rules.json`
 
 ---
 **Steps to get Profiles are listed below**
 
 - To get list of all profiles in the instance run `npm run get:profiles`. The output is stored in the `output` folder under this name `get-all-profiles.json`
-- To get list of all predefined profiles in the instance run `npm run get:profiles --profile_type=system_defined`.  The output is stored in the `output` folder under this name `get-system-defined-profiles.json`
-- To get list of all custom profiles in the instance run `npm run get:profiles --profile_type=user_defined`.  The output is stored in the `output` folder under this name `get-user-defined-profiles.json`
+- To get list of all predefined profiles in the instance run `npm run get:profiles --profile_type=predefined`.  The output is stored in the `output` folder under this name `get-predefined-profiles.json`
+- To get list of all custom profiles in the instance run `npm run get:profiles --profile_type=custom`.  The output is stored in the `output` folder under this name `get-custom-profiles.json`
 
 ---
 
