@@ -9,7 +9,7 @@ let converter = require('json-2-csv');
 // common util
 
 const common = require('../../helpers/common');
-const { isEmpty, flatten, map, uniqBy, size, filter, get } = require('lodash');
+const { isEmpty, flatten, map, uniqBy, size, filter, get, find, keys, mapKeys } = require('lodash');
 
 // environment variables
 const apiKey = process.env['IAM_API_KEY'];
@@ -57,18 +57,44 @@ const getProfileDetails = async () => {
                     if (!profileError) {
 
                         // getting list of specifications 
-                        const specifications = flatten(map(profileData.controls, (control) => ([
-                            ...control.control_specifications
-                        ])));
+                        const specifications = flatten(map(profileData.controls, (control) => {
+                            map(control.control_specifications, (specification) => {
+                                specification.control_name = control.control_name;
+                            })
+                            return [
+                                ...control.control_specifications,
+                            ];
+                        }));
 
                         // getting list of assessments 
                         const assessments = flatten(map(specifications, (specification) => (
                             map(specification.assessments, (assessment) => ({
                                 component_id: specification.component_id,
                                 component_name: specification.component_name,
+                                controls: [specification.control_name],
                                 ...assessment
                             }))
                         )));
+                        // getting controls for the assessments
+                        map(specifications, (controlSpecification) => {
+                            map(controlSpecification.assessments, (assessment) => {
+                                map(assessments, (evaluation) => {
+                                    if (assessment.assessment_id === evaluation.assessment_id) {
+                                        // check if control is already added
+                                        const controlPresent = find(evaluation.control_details, { control_name: controlSpecification.control_name });
+                                        if (!isEmpty(evaluation.control_details)) {
+                                            isEmpty(controlPresent) && evaluation.control_details.push({ control_name: controlSpecification.control_name });
+                                        } else {
+                                            evaluation.control_details = [{
+                                                control_name: controlSpecification.control_name
+                                            }];
+                                        }
+                                    }
+                                    // list of unique control names only
+                                    evaluation.controls = keys(mapKeys(evaluation.control_details, 'control_name'));
+                                });
+                            });
+                        });
 
                         // add assessment details to parameters
                         const uniqueAssessments = uniqBy(assessments, 'assessment_id');
@@ -88,6 +114,7 @@ const getProfileDetails = async () => {
 
                         // add parameter details to assessments
                         map(uniqueAssessments, (assessment) => {
+                            delete assessment.control_details;
                             if (!isEmpty(assessment.parameters)) {
                                 const parameter = filter(defaultParameters, { parameter_name: get(assessment, 'parameters[0].parameter_name', null) });
                                 if (isEmpty(parameter)) {
