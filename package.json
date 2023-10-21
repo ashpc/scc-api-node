@@ -15,7 +15,8 @@
     "got": "11.8.5",
     "lodash": "^4.17.21",
     "uuid": "^8.3.2",
-    "querystring": "^0.2.1"
+    "querystring": "^0.2.1",
+    "json-2-csv": "^4.1.0"
   },
   "contributor": [
     "Ashwini Chandrase"

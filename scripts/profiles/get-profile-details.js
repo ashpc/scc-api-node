@@ -4,6 +4,7 @@
 const fs = require('fs');
 const v4 = require('uuid');
 const qs = require('querystring');
+let converter = require('json-2-csv');
 
 // common util
 
@@ -17,6 +18,8 @@ const sccRegion = process.env['SCC_REGION'] || 'us-south';
 const sccInstanceId = process.env['SCC_INSTANCE_ID'];
 const sccBaseURL = `https://${sccRegion}.compliance.cloud.ibm.com/instances/${sccInstanceId}/v3`
 const profileId = process.env['npm_config_profile_id'];
+
+
 
 const getProfileDetails = async () => {
 
@@ -98,7 +101,10 @@ const getProfileDetails = async () => {
                         // file name creation
                         const profileName = profileData.profile_name;
                         const fileName = profileName.toLowerCase().replace(/[^a-z]/g, "-") + '-' + profileData.profile_version;
-                        const filePath = `./output/get-${fileName}-details.json`;
+                        const jsonFilePath = `./output/get-${fileName}-details.json`;
+                        const csvAsIsFilePath = `./output/get-${fileName}-details-as-is.csv`;
+                        const csvAssessmentsFilePath = `./output/get-${fileName}-assessments-details.csv`;
+                        const csvParametersFilePath = `./output/get-${fileName}-parameters-details.csv`;
 
 
 
@@ -111,20 +117,56 @@ const getProfileDetails = async () => {
                         console.log('Unique assessments count: ', size(uniqueAssessments));
                         console.log('Assessments with parameters count: ', size(uniqBy(defaultParameters, 'assessment_id')));
 
-                        const finalData = JSON.stringify({
+                        const data = {
                             profile_data: profileData,
                             unique_assessments: uniqueAssessments,
                             controls_count: profileData.controls_count,
                             assessments_count: size(assessments),
                             unique_assessments_count: size(uniqueAssessments),
                             assessments_default_parameters: profileData.default_parameters
-                        }, null, 2);
+                        };
+                        const finalData = JSON.stringify(data, null, 2);
 
-                        fs.writeFile(filePath, finalData, (err) => {
+
+                        // writing to JSON
+                        fs.writeFile(jsonFilePath, finalData, (err) => {
                             if (err) throw err;
-                            console.log('Data written to file at ', filePath);
-                            console.log('============END==================');
+                            console.log('JSON Data written to file at ', jsonFilePath);
                         });
+
+                        // api response as is in CSV
+                        converter.json2csv(profileData)
+                            .then((csv) => {
+                                fs.writeFile(csvAsIsFilePath, csv, (err) => {
+                                    if (err) throw err;
+                                    console.log('API response as in CSV Data written to file at ', csvAsIsFilePath);
+                                });
+                            })
+                            .catch((err) => console.log('ERROR in profileData: ' + err.message));
+
+                        // writing uniqueAssessments to CSV
+
+                        converter.json2csv(uniqueAssessments)
+                            .then((csv) => {
+                                fs.writeFile(csvAssessmentsFilePath, csv, (err) => {
+                                    if (err) throw err;
+                                    console.log('uniqueAssessments CSV Data written to file at ', csvAssessmentsFilePath);
+                                });
+                            })
+                            .catch((err) => console.log('ERROR in uniqueAssessments : ' + err.message));
+
+                        // writing parameters to CSV
+
+                        converter.json2csv(profileData.default_parameters)
+                            .then((csv) => {
+                                fs.writeFile(csvParametersFilePath, csv, (err) => {
+                                    if (err) throw err;
+                                    console.log('default_parameters CSV Data written to file at ', csvParametersFilePath);
+                                });
+                            })
+                            .catch((err) => console.log('ERROR in default_parameters: ' + err.message));
+
+
                     }
                 });
             }
