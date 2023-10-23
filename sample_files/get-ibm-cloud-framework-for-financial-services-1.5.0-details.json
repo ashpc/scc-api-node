@@ -1408,7 +1408,7 @@
                     "parameter_name": "public_gateway_permitted_zones",
                     "parameter_display_name": "IBM Cloud Public Gateway permitted zones",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['us-south-1', 'us-south-2', 'us-south-3', 'us-east-1', 'us-east-2', 'us-east-3', 'au-syd-1', 'au-syd-2', 'au-syd-3', 'eu-de-1', 'eu-de-2', 'eu-de-3', 'eu-gb-1', 'eu-gb-2']"
                   }
                 ]
               }
@@ -1435,7 +1435,7 @@
                     "parameter_name": "dns_port",
                     "parameter_display_name": "Security group rule for allowed port numbers to DNS",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "53"
                   }
                 ]
               }
@@ -1522,7 +1522,7 @@
                     "parameter_name": "exclude_load_balancers",
                     "parameter_display_name": "Exclude Application Load Balancers that have public access",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['public-access-load-balancer', 'public-access-edge-node-load-balancer']"
                   }
                 ]
               }
@@ -1649,7 +1649,7 @@
                     "parameter_name": "number_of_vpcs",
                     "parameter_display_name": "At least one VPC created",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "1"
                   }
                 ]
               }
@@ -1676,7 +1676,7 @@
                     "parameter_name": "number_of_transit_gateways",
                     "parameter_display_name": "Number of transit gateways",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "1"
                   }
                 ]
               }
@@ -1703,7 +1703,7 @@
                     "parameter_name": "check_enforced",
                     "parameter_display_name": "check for cbr enforcement",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['cbr', 'service']"
                   }
                 ]
               }
@@ -1730,7 +1730,7 @@
                     "parameter_name": "allowed_ip",
                     "parameter_display_name": "IP allowlist for COS",
                     "parameter_type": "ip_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['192.168.1.0/24']"
                   }
                 ]
               }
@@ -1757,7 +1757,7 @@
                     "parameter_name": "check_enforced",
                     "parameter_display_name": "check for cbr enforcement",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['cbr', 'service']"
                   }
                 ]
               }
@@ -1804,7 +1804,7 @@
                     "parameter_name": "check_enforced",
                     "parameter_display_name": "check for cbr enforcement",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['cbr', 'service']"
                   }
                 ]
               }
@@ -1911,7 +1911,7 @@
                     "parameter_name": "vm_nic_count",
                     "parameter_display_name": "IBM Cloud Network Interfaces count",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "1"
                   }
                 ]
               }
@@ -1938,7 +1938,7 @@
                     "parameter_name": "exclude_floating_ip_list",
                     "parameter_display_name": "Exclude exclude the IP spoofing",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['my_f5_server']"
                   }
                 ]
               }
@@ -1965,7 +1965,7 @@
                     "parameter_name": "exclude_ip_spoofing_check",
                     "parameter_display_name": "Exclude interfaces with IP-spoofing from VPC",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['vm-qa-automation-prod']"
                   }
                 ]
               }
@@ -1992,7 +1992,7 @@
                     "parameter_name": "inbound_allowed_list",
                     "parameter_display_name": "Enter the IP/CIDR list allowed for VPC inbound",
                     "parameter_type": "ip_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['0.0.0.0/0']"
                   }
                 ]
               }
@@ -2019,7 +2019,7 @@
                     "parameter_name": "outbound_allowed_list",
                     "parameter_display_name": "Enter the IP/CIDR list allowed for VPC Outbound",
                     "parameter_type": "ip_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['0.0.0.0/0']"
                   }
                 ]
               }
@@ -2046,7 +2046,7 @@
                     "parameter_name": "excluded_subnets",
                     "parameter_display_name": "Subnet(s) name",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['dummy-subnet-1', 'dummy-subnet-2']"
                   }
                 ]
               }
@@ -2173,7 +2173,7 @@
                     "parameter_name": "check_enforced",
                     "parameter_display_name": "check for cbr enforcement",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['cbr', 'service']"
                   }
                 ]
               }
@@ -2220,7 +2220,7 @@
                     "parameter_name": "check_enforced",
                     "parameter_display_name": "check for cbr enforcement",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['cbr', 'service']"
                   }
                 ]
               }
@@ -2507,7 +2507,7 @@
                     "parameter_name": "check_enforced",
                     "parameter_display_name": "check for cbr enforcement",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['cbr', 'service']"
                   }
                 ]
               }
@@ -4523,7 +4523,7 @@
                     "parameter_name": "lockout_policy_config_minutes",
                     "parameter_display_name": "Lockout duration policy setting in minutes",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "15"
                   }
                 ]
               }
@@ -4707,7 +4707,7 @@
                     "parameter_name": "session_invalidation_in_seconds",
                     "parameter_display_name": "Sign out due to inactivity in seconds",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "7200"
                   }
                 ]
               }
@@ -7198,7 +7198,7 @@
                     "parameter_name": "scan_interval_max",
                     "parameter_display_name": "Maximum number of days between vulnerability scans",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "3"
                   }
                 ]
               }
@@ -8719,7 +8719,7 @@
                     "parameter_name": "allowed_tool_integration_services",
                     "parameter_display_name": "List of allowed tool integration services for toolchains",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['artifactory', 'customtool', 'draservicebroker', 'githubconsolidated', 'gitlab', 'hashicorpvault', 'hostedgit', 'keyprotect', 'pagerduty', 'pipeline', 'private_worker', 'saucelabs', 'secretsmanager', 'security_compliance', 'slack', 'sonarqube']"
                   }
                 ]
               }
@@ -14738,7 +14738,7 @@
                     "parameter_name": "openshift_versions",
                     "parameter_display_name": "Custom support openshift versions",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['4.10', '4.11']"
                   }
                 ]
               }
@@ -14765,7 +14765,7 @@
                     "parameter_name": "defined_images",
                     "parameter_display_name": "VPC provisioned from list of customer-defined images",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['ibm-ubuntu-20-04-minimal-amd64-2', 'ibm-debian-10-0-minimal-amd64-1', 'ibm-sles-15-1-amd64-sap-hana-1', 'ibm-sles-15-1-amd64-sap-applications-1', 'ibm-redhat-8-1-minimal-amd64-1', 'ibm-centos-8-2-minimal-amd64-2', 'ibm-windows-server-2019-full-standard-amd64-1', 'ibm-ubuntu-18-04-1-minimal-amd64-2', 'ibm-debian-9-12-minimal-amd64-2']"
                   }
                 ]
               }
@@ -15726,7 +15726,7 @@
                     "parameter_name": "fs_cloud_regions",
                     "parameter_display_name": "Hyper Protect Crypto Services regions",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['au-syd', 'br-sao', 'ca-tor', 'eu-de', 'eu-gb', 'jp-osa', 'jp-tok', 'us-east', 'us-south']"
                   }
                 ]
               }
@@ -16040,7 +16040,7 @@
                     "parameter_name": "vpc_min_zones",
                     "parameter_display_name": "Minimum number of VPC zones",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "3"
                   }
                 ]
               }
@@ -16067,7 +16067,7 @@
                     "parameter_name": "loadbalancer_min_lb_zones",
                     "parameter_display_name": "Minimal number of loadbalancer zones",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "3"
                   }
                 ]
               }
@@ -16094,7 +16094,7 @@
                     "parameter_name": "number_of_direct_links",
                     "parameter_display_name": "Number of Direct Links",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "2"
                   }
                 ]
               }
@@ -16167,7 +16167,7 @@
                     "parameter_name": "hpcs_crypto_units",
                     "parameter_display_name": "Number of IBM Cloud Hyper Protect Crypto Service units",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['2', '3']"
                   }
                 ]
               }
@@ -18598,7 +18598,7 @@
                     "parameter_name": "no_pre_shared_key_characters",
                     "parameter_display_name": "Enough characters in pre-shared key",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "24"
                   }
                 ]
               }
@@ -18714,7 +18714,7 @@
                     "parameter_name": "min_hours_change_password",
                     "parameter_display_name": "Mininum number of hours between App ID password changes",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "0"
                   }
                 ]
               }
@@ -18798,7 +18798,7 @@
                     "parameter_name": "hpcs_rotation_policy",
                     "parameter_display_name": "Hyper Protect Crypto Services key rotation policy",
                     "parameter_type": "string_list",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']"
                   }
                 ]
               }
@@ -18825,7 +18825,7 @@
                     "parameter_name": "arbitrary_secret_min_rotation_period",
                     "parameter_display_name": "Minimum rotation period of Secrets Manager arbitrary secrets",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "90"
                   }
                 ]
               }
@@ -18852,7 +18852,7 @@
                     "parameter_name": "user_credential_min_rotation_period",
                     "parameter_display_name": "Minimum rotation period of Secrets Manager user credentials",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "90"
                   }
                 ]
               }
@@ -38334,7 +38334,7 @@
                     "parameter_name": "session_expiration_in_seconds",
                     "parameter_display_name": "Session expiration in seconds for the account",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "86400"
                   }
                 ]
               }
@@ -38361,7 +38361,7 @@
                     "parameter_name": "access_tokens_expiration_minutes",
                     "parameter_display_name": "Expiration in minutes of App ID access tokens",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "120"
                   }
                 ]
               }
@@ -39091,7 +39091,7 @@
                     "parameter_name": "diffie_hellman_group",
                     "parameter_display_name": "Diffie-Hellman group number set",
                     "parameter_type": "numeric",
-                    "parameter_default_value": 0
+                    "parameter_default_value": "14"
                   }
                 ]
               }
@@ -43622,7 +43622,7 @@
           "parameter_name": "public_gateway_permitted_zones",
           "parameter_display_name": "IBM Cloud Public Gateway permitted zones",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['us-south-1', 'us-south-2', 'us-south-3', 'us-east-1', 'us-east-2', 'us-east-3', 'au-syd-1', 'au-syd-2', 'au-syd-3', 'eu-de-1', 'eu-de-2', 'eu-de-3', 'eu-gb-1', 'eu-gb-2']"
         }
       ]
     },
@@ -43649,7 +43649,7 @@
           "parameter_name": "dns_port",
           "parameter_display_name": "Security group rule for allowed port numbers to DNS",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "53"
         }
       ]
     },
@@ -43731,7 +43731,7 @@
           "parameter_name": "exclude_load_balancers",
           "parameter_display_name": "Exclude Application Load Balancers that have public access",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['public-access-load-balancer', 'public-access-edge-node-load-balancer']"
         }
       ]
     },
@@ -43857,7 +43857,7 @@
           "parameter_name": "number_of_vpcs",
           "parameter_display_name": "At least one VPC created",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "1"
         }
       ]
     },
@@ -43879,7 +43879,7 @@
           "parameter_name": "number_of_transit_gateways",
           "parameter_display_name": "Number of transit gateways",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "1"
         }
       ]
     },
@@ -43905,7 +43905,7 @@
           "parameter_name": "check_enforced",
           "parameter_display_name": "check for cbr enforcement",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['cbr', 'service']"
         }
       ]
     },
@@ -43928,7 +43928,7 @@
           "parameter_name": "allowed_ip",
           "parameter_display_name": "IP allowlist for COS",
           "parameter_type": "ip_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['192.168.1.0/24']"
         }
       ]
     },
@@ -43954,7 +43954,7 @@
           "parameter_name": "check_enforced",
           "parameter_display_name": "check for cbr enforcement",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['cbr', 'service']"
         }
       ]
     },
@@ -43999,7 +43999,7 @@
           "parameter_name": "check_enforced",
           "parameter_display_name": "check for cbr enforcement",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['cbr', 'service']"
         }
       ]
     },
@@ -44106,7 +44106,7 @@
           "parameter_name": "vm_nic_count",
           "parameter_display_name": "IBM Cloud Network Interfaces count",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "1"
         }
       ]
     },
@@ -44132,7 +44132,7 @@
           "parameter_name": "exclude_floating_ip_list",
           "parameter_display_name": "Exclude exclude the IP spoofing",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['my_f5_server']"
         }
       ]
     },
@@ -44158,7 +44158,7 @@
           "parameter_name": "exclude_ip_spoofing_check",
           "parameter_display_name": "Exclude interfaces with IP-spoofing from VPC",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['vm-qa-automation-prod']"
         }
       ]
     },
@@ -44183,7 +44183,7 @@
           "parameter_name": "inbound_allowed_list",
           "parameter_display_name": "Enter the IP/CIDR list allowed for VPC inbound",
           "parameter_type": "ip_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['0.0.0.0/0']"
         }
       ]
     },
@@ -44209,7 +44209,7 @@
           "parameter_name": "outbound_allowed_list",
           "parameter_display_name": "Enter the IP/CIDR list allowed for VPC Outbound",
           "parameter_type": "ip_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['0.0.0.0/0']"
         }
       ]
     },
@@ -44234,7 +44234,7 @@
           "parameter_name": "excluded_subnets",
           "parameter_display_name": "Subnet(s) name",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['dummy-subnet-1', 'dummy-subnet-2']"
         }
       ]
     },
@@ -44331,7 +44331,7 @@
           "parameter_name": "check_enforced",
           "parameter_display_name": "check for cbr enforcement",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['cbr', 'service']"
         }
       ]
     },
@@ -44376,7 +44376,7 @@
           "parameter_name": "check_enforced",
           "parameter_display_name": "check for cbr enforcement",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['cbr', 'service']"
         }
       ]
     },
@@ -44649,7 +44649,7 @@
           "parameter_name": "check_enforced",
           "parameter_display_name": "check for cbr enforcement",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['cbr', 'service']"
         }
       ]
     },
@@ -45843,7 +45843,7 @@
           "parameter_name": "lockout_policy_config_minutes",
           "parameter_display_name": "Lockout duration policy setting in minutes",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "15"
         }
       ]
     },
@@ -45876,7 +45876,7 @@
           "parameter_name": "session_invalidation_in_seconds",
           "parameter_display_name": "Sign out due to inactivity in seconds",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "7200"
         }
       ]
     },
@@ -46052,7 +46052,7 @@
           "parameter_name": "scan_interval_max",
           "parameter_display_name": "Maximum number of days between vulnerability scans",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "3"
         }
       ]
     },
@@ -46392,7 +46392,7 @@
           "parameter_name": "allowed_tool_integration_services",
           "parameter_display_name": "List of allowed tool integration services for toolchains",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['artifactory', 'customtool', 'draservicebroker', 'githubconsolidated', 'gitlab', 'hashicorpvault', 'hostedgit', 'keyprotect', 'pagerduty', 'pipeline', 'private_worker', 'saucelabs', 'secretsmanager', 'security_compliance', 'slack', 'sonarqube']"
         }
       ]
     },
@@ -46676,7 +46676,7 @@
           "parameter_name": "openshift_versions",
           "parameter_display_name": "Custom support openshift versions",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['4.10', '4.11']"
         }
       ]
     },
@@ -46696,7 +46696,7 @@
           "parameter_name": "defined_images",
           "parameter_display_name": "VPC provisioned from list of customer-defined images",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['ibm-ubuntu-20-04-minimal-amd64-2', 'ibm-debian-10-0-minimal-amd64-1', 'ibm-sles-15-1-amd64-sap-hana-1', 'ibm-sles-15-1-amd64-sap-applications-1', 'ibm-redhat-8-1-minimal-amd64-1', 'ibm-centos-8-2-minimal-amd64-2', 'ibm-windows-server-2019-full-standard-amd64-1', 'ibm-ubuntu-18-04-1-minimal-amd64-2', 'ibm-debian-9-12-minimal-amd64-2']"
         }
       ]
     },
@@ -46725,7 +46725,7 @@
           "parameter_name": "fs_cloud_regions",
           "parameter_display_name": "Hyper Protect Crypto Services regions",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['au-syd', 'br-sao', 'ca-tor', 'eu-de', 'eu-gb', 'jp-osa', 'jp-tok', 'us-east', 'us-south']"
         }
       ]
     },
@@ -46773,7 +46773,7 @@
           "parameter_name": "vpc_min_zones",
           "parameter_display_name": "Minimum number of VPC zones",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "3"
         }
       ]
     },
@@ -46798,7 +46798,7 @@
           "parameter_name": "loadbalancer_min_lb_zones",
           "parameter_display_name": "Minimal number of loadbalancer zones",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "3"
         }
       ]
     },
@@ -46821,7 +46821,7 @@
           "parameter_name": "number_of_direct_links",
           "parameter_display_name": "Number of Direct Links",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "2"
         }
       ]
     },
@@ -46863,7 +46863,7 @@
           "parameter_name": "hpcs_crypto_units",
           "parameter_display_name": "Number of IBM Cloud Hyper Protect Crypto Service units",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['2', '3']"
         }
       ]
     },
@@ -47215,7 +47215,7 @@
           "parameter_name": "no_pre_shared_key_characters",
           "parameter_display_name": "Enough characters in pre-shared key",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "24"
         }
       ]
     },
@@ -47261,7 +47261,7 @@
           "parameter_name": "min_hours_change_password",
           "parameter_display_name": "Mininum number of hours between App ID password changes",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "0"
         }
       ]
     },
@@ -47284,7 +47284,7 @@
           "parameter_name": "hpcs_rotation_policy",
           "parameter_display_name": "Hyper Protect Crypto Services key rotation policy",
           "parameter_type": "string_list",
-          "parameter_default_value": 0
+          "parameter_default_value": "['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12']"
         }
       ]
     },
@@ -47304,7 +47304,7 @@
           "parameter_name": "arbitrary_secret_min_rotation_period",
           "parameter_display_name": "Minimum rotation period of Secrets Manager arbitrary secrets",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "90"
         }
       ]
     },
@@ -47324,7 +47324,7 @@
           "parameter_name": "user_credential_min_rotation_period",
           "parameter_display_name": "Minimum rotation period of Secrets Manager user credentials",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "90"
         }
       ]
     },
@@ -47549,7 +47549,7 @@
           "parameter_name": "session_expiration_in_seconds",
           "parameter_display_name": "Session expiration in seconds for the account",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "86400"
         }
       ]
     },
@@ -47569,7 +47569,7 @@
           "parameter_name": "access_tokens_expiration_minutes",
           "parameter_display_name": "Expiration in minutes of App ID access tokens",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "120"
         }
       ]
     },
@@ -47675,7 +47675,7 @@
           "parameter_name": "diffie_hellman_group",
           "parameter_display_name": "Diffie-Hellman group number set",
           "parameter_type": "numeric",
-          "parameter_default_value": 0
+          "parameter_default_value": "14"
         }
       ]
     },

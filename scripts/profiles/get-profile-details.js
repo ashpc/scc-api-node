@@ -134,12 +134,15 @@ const getProfileDetails = async () => {
                             }
                             if (!isEmpty(assessment.parameters)) {
                                 map(assessment.parameters, (assessmentParameter) => {
-                                    const parameter = filter(defaultParameters, { parameter_name: get(assessmentParameter, 'parameter_name', null) });
-                                    if (isEmpty(parameter)) {
+                                    const parameters = filter(defaultParameters, { parameter_name: get(assessmentParameter, 'parameter_name', null) });
+                                    if (isEmpty(parameters)) {
                                         console.log('ERROR: Missing parameter');
                                     } else {
-                                        // ideally 1 parameter per assessment need this will handle more than 1
-                                        assessmentParameter.parameter_default_value = get(parameter, 'parameter_default_value', 0);
+                                        map(parameters, (parameter) => {
+                                            if (parameter.parameter_name === assessmentParameter.parameter_name) {
+                                                assessmentParameter.parameter_default_value = parameter.parameter_default_value;
+                                            }
+                                        });
                                     }
                                 });
                             }
