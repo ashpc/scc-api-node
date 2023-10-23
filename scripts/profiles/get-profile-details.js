@@ -9,7 +9,7 @@ let converter = require('json-2-csv');
 // common util
 
 const common = require('../../helpers/common');
-const { isEmpty, flatten, map, uniqBy, size, filter, get, find, keys, mapKeys, isEqual } = require('lodash');
+const { isEmpty, flatten, map, uniqBy, size, filter, get, find, keys, mapKeys, isEqual, uniq } = require('lodash');
 
 // environment variables
 const apiKey = process.env['IAM_API_KEY'];
@@ -56,6 +56,7 @@ const getProfileDetails = async () => {
                 return common.getData(options, (profileData, profileError) => {
                     if (!profileError) {
 
+                        console.log('...Flattening the Control Specifications');
                         // getting list of specifications 
                         const specifications = flatten(map(profileData.controls, (control) => {
                             map(control.control_specifications, (specification) => {
@@ -66,6 +67,7 @@ const getProfileDetails = async () => {
                             ];
                         }));
 
+                        console.log('.....Flattening the Assessments');
                         // getting list of assessments 
                         const assessments = flatten(map(specifications, (specification) => (
                             map(specification.assessments, (assessment) => ({
@@ -75,6 +77,7 @@ const getProfileDetails = async () => {
                                 ...assessment
                             }))
                         )));
+                        console.log('........Mapping the controls to assessments');
                         // getting controls for the assessments
                         map(specifications, (controlSpecification) => {
                             map(controlSpecification.assessments, (assessment) => {
@@ -119,10 +122,16 @@ const getProfileDetails = async () => {
                             }
                         });
 
-
+                        let components = [];
+                        console.log('..............Mapping the parameters values to assessments');
                         // add parameter details to assessments
                         map(uniqueAssessments, (assessment) => {
                             delete assessment.control_details;
+                            if (isEmpty(components)) {
+                                components = [{ component_id: assessment.component_id, controls: assessment.controls }]
+                            } else {
+                                components.push({ component_id: assessment.component_id, controls: assessment.controls });
+                            }
                             if (!isEmpty(assessment.parameters)) {
                                 map(assessment.parameters, (assessmentParameter) => {
                                     const parameter = filter(defaultParameters, { parameter_name: get(assessmentParameter, 'parameter_name', null) });
@@ -134,6 +143,13 @@ const getProfileDetails = async () => {
                                     }
                                 });
                             }
+                            // get components to controls mapping 
+                            map(components, (component) => {
+                                if (component.component_id === assessment.component_id) {
+                                    component.controls = uniq(component.controls.concat(assessment.controls))
+                                    component.controls_count = size(component.controls);
+                                }
+                            });
                         });
 
                         // file name creation
@@ -145,9 +161,10 @@ const getProfileDetails = async () => {
                         const csvParametersFilePath = `./output/get-${fileName}-parameters-details.csv`;
 
 
+                        console.log('===============================');
+                        console.log('....Printing Information...');
+                        console.log('===============================');
 
-
-                        console.log('=============START==================');
                         console.log('Profile name: ', profileName);
                         console.log('Profile version: ', profileData.profile_version);
                         console.log('Controls count: ', profileData.controls_count);
@@ -163,9 +180,14 @@ const getProfileDetails = async () => {
                             controls_count: profileData.controls_count,
                             assessments_count: size(assessments),
                             unique_assessments_count: size(uniqueAssessments),
-                            assessments_default_parameters: profileData.default_parameters
+                            assessments_default_parameters: profileData.default_parameters,
+                            unique_components: uniqBy(components, 'component_id')
                         };
                         const finalData = JSON.stringify(data, null, 2);
+
+                        console.log('===============================');
+                        console.log('....Printing Output files Information...');
+                        console.log('===============================');
 
 
                         // writing to JSON
@@ -205,7 +227,6 @@ const getProfileDetails = async () => {
                                 });
                             })
                             .catch((err) => console.log('ERROR in default_parameters: ' + err.message));
-
 
                     }
                 });

@@ -48181,5 +48181,880 @@
       "parameter_display_name": "Diffie-Hellman group number set",
       "parameter_type": "numeric"
     }
+  ],
+  "unique_components": [
+    {
+      "component_id": "billing",
+      "controls": [
+        "ESA-3(0)",
+        "ESA-5(0)",
+        "AC-20(a)",
+        "CA-3(a)",
+        "SA-4(a)",
+        "SA-9(a)",
+        "AC-3(0)",
+        "AC-6(0)"
+      ],
+      "controls_count": 8
+    },
+    {
+      "component_id": "iam-identity",
+      "controls": [
+        "ESA-3(0)",
+        "ESA-5(0)",
+        "AC-20(a)",
+        "CA-3(a)",
+        "SA-4(a)",
+        "SA-4(b)",
+        "SA-4(c)",
+        "SA-4(d)",
+        "SA-4(e)",
+        "SA-4(f)",
+        "SA-4(g)",
+        "SA-9(a)",
+        "AC-2(a)",
+        "AC-2(d)",
+        "AC-3(0)",
+        "AC-5(c)",
+        "AC-6(0)",
+        "IA-7(0)",
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "AC-7(a)",
+        "AC-7(b)",
+        "AC-11(a)",
+        "AC-11(b)",
+        "AC-11(1)(0)",
+        "AC-16(a)",
+        "AC-17(9)(0)",
+        "IA-2(0)",
+        "IA-2(1)(0)",
+        "IA-2(2)(0)",
+        "IA-3(0)",
+        "IA-4(b)",
+        "IA-4(c)",
+        "IA-4(d)",
+        "IA-5(b)",
+        "IA-5(c)",
+        "IA-5(f)",
+        "IA-5(1)(a)",
+        "IA-5(4)(0)",
+        "IA-5(1)(c)",
+        "IA-5(1)(d)",
+        "IA-5(1)(e)",
+        "IA-6(0)",
+        "SC-10(0)"
+      ],
+      "controls_count": 49
+    },
+    {
+      "component_id": "user-management",
+      "controls": [
+        "AC-2(d)",
+        "AC-3(0)",
+        "AC-5(c)",
+        "AC-6(0)",
+        "IA-7(0)",
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 12
+    },
+    {
+      "component_id": "atracker",
+      "controls": [
+        "AC-2(g)",
+        "AC-2(4)(0)",
+        "AC-2(7)(b)",
+        "AC-6(9)(0)",
+        "AU-2(a)",
+        "AU-2(d)",
+        "AU-3(0)",
+        "AU-8(a)",
+        "AU-8(b)",
+        "AU-8(1)(a)",
+        "AU-8(1)(b)",
+        "AU-12(a)",
+        "AU-12(b)",
+        "AU-12(c)",
+        "CA-7(d)",
+        "SI-4(a)",
+        "SI-4(b)",
+        "SI-4(c)",
+        "AC-4(0)",
+        "AU-4(0)",
+        "AU-11(0)",
+        "SI-12(0)",
+        "AU-9(2)(0)",
+        "CP-6(a)",
+        "CP-6(b)",
+        "CP-6(1)(0)",
+        "CP-7(a)",
+        "CP-7(b)",
+        "CP-7(c)",
+        "CP-7(1)(0)",
+        "CP-9(b)",
+        "CP-9(d)",
+        "CP-10(0)",
+        "SC-6(0)"
+      ],
+      "controls_count": 34
+    },
+    {
+      "component_id": "iam-groups",
+      "controls": [
+        "AC-3(0)",
+        "AC-4(0)",
+        "AC-6(0)",
+        "AC-14(a)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 10
+    },
+    {
+      "component_id": "is.public-gateway",
+      "controls": [
+        "AC-4(0)",
+        "SC-7(a)",
+        "SC-7(c)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "SC-7(10)(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(b)"
+      ],
+      "controls_count": 9
+    },
+    {
+      "component_id": "is.security-group",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "SC-7(10)(0)",
+        "SC-7(c)"
+      ],
+      "controls_count": 9
+    },
+    {
+      "component_id": "is.network-acl",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "CM-7(a)",
+        "SC-7(c)",
+        "SC-7(10)(0)"
+      ],
+      "controls_count": 9
+    },
+    {
+      "component_id": "container-registry",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "CA-2(2)(0)",
+        "CA-7(d)",
+        "CM-3(2)(0)",
+        "CM-4(0)",
+        "CM-4(1)(0)",
+        "CM-7(1)(a)",
+        "RA-5(a)",
+        "RA-5(b)",
+        "RA-5(c)",
+        "RA-5(d)",
+        "RA-5(1)(0)",
+        "RA-5(2)(0)",
+        "RA-5(3)(0)",
+        "SA-3(a)",
+        "SA-3(d)",
+        "SA-8(0)",
+        "SA-10(e)",
+        "SA-10(1)(0)",
+        "SA-15(a)",
+        "SI-2(a)",
+        "SI-2(b)",
+        "SI-2(c)",
+        "SI-2(d)",
+        "SI-2(2)(0)",
+        "SI-3(a)"
+      ],
+      "controls_count": 32
+    },
+    {
+      "component_id": "is.load-balancer",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "SC-7(b)",
+        "IA-5(1)(c)",
+        "SC-7(4)(c)",
+        "SC-8(0)",
+        "SC-8(1)(0)",
+        "SC-11(0)",
+        "SC-13(0)",
+        "SC-23(0)",
+        "CP-7(a)",
+        "CP-7(b)",
+        "CP-7(c)",
+        "CP-7(1)(0)",
+        "CP-10(0)",
+        "SC-6(0)"
+      ],
+      "controls_count": 20
+    },
+    {
+      "component_id": "is.vpc",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(c)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "SC-7(10)(0)",
+        "SC-2(0)",
+        "SC-3(0)",
+        "CP-7(a)",
+        "CP-7(b)",
+        "CP-7(c)",
+        "CP-7(1)(0)",
+        "CP-10(0)",
+        "SC-6(0)",
+        "IA-3(0)",
+        "SI-4(a)",
+        "SI-4(b)",
+        "SI-4(c)"
+      ],
+      "controls_count": 21
+    },
+    {
+      "component_id": "is.vpn",
+      "controls": [
+        "AC-4(0)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(c)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "SC-7(10)(0)",
+        "SC-11(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "IA-5(c)",
+        "IA-5(4)(0)",
+        "SC-13(0)"
+      ],
+      "controls_count": 13
+    },
+    {
+      "component_id": "transit",
+      "controls": [
+        "AC-4(0)",
+        "SC-2(0)",
+        "SC-3(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 9
+    },
+    {
+      "component_id": "cloud-object-storage",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "AU-4(0)",
+        "SI-12(0)",
+        "SC-7(4)(c)",
+        "SC-8(0)",
+        "SC-8(1)(0)",
+        "SC-11(0)",
+        "SC-13(0)",
+        "SC-23(0)",
+        "CP-6(a)",
+        "CP-6(b)",
+        "CP-6(1)(0)",
+        "CP-7(a)",
+        "CP-7(b)",
+        "CP-7(c)",
+        "CP-7(1)(0)",
+        "CP-9(b)",
+        "CP-9(d)",
+        "CP-10(0)",
+        "SC-6(0)",
+        "SC-28(0)",
+        "SC-28(1)(0)"
+      ],
+      "controls_count": 28
+    },
+    {
+      "component_id": "hs-crypto",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "CP-6(a)",
+        "CP-6(b)",
+        "CP-6(1)(0)",
+        "CP-7(a)",
+        "CP-7(b)",
+        "CP-7(c)",
+        "CP-7(1)(0)",
+        "CP-9(b)",
+        "CP-9(d)",
+        "CP-10(0)",
+        "SC-6(0)",
+        "IA-5(g)",
+        "SC-12(0)",
+        "SC-12(2)(0)",
+        "SC-12(3)(0)",
+        "IA-7(0)"
+      ],
+      "controls_count": 23
+    },
+    {
+      "component_id": "containers-kubernetes",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "CM-8(3)(a)",
+        "SI-2(2)(0)",
+        "CP-7(a)",
+        "CP-7(b)",
+        "CP-7(c)",
+        "CP-7(1)(0)",
+        "CP-10(0)",
+        "SC-6(0)",
+        "IA-2(0)",
+        "IA-5(c)"
+      ],
+      "controls_count": 17
+    },
+    {
+      "component_id": "messagehub",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "SC-13(0)",
+        "SC-28(0)",
+        "SC-28(1)(0)"
+      ],
+      "controls_count": 10
+    },
+    {
+      "component_id": "appid",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "AC-5(c)",
+        "AC-6(0)",
+        "AC-7(a)",
+        "AC-7(b)",
+        "IA-5(c)",
+        "IA-5(f)",
+        "IA-5(1)(d)",
+        "IA-5(1)(e)",
+        "AC-14(a)",
+        "AU-2(a)",
+        "AU-2(d)",
+        "IA-5(1)(c)",
+        "SC-7(4)(c)",
+        "SC-8(0)",
+        "SC-8(1)(0)",
+        "SC-11(0)",
+        "SC-13(0)",
+        "SC-23(0)",
+        "IA-2(1)(0)",
+        "IA-2(2)(0)",
+        "IA-5(a)",
+        "IA-5(1)(a)",
+        "IA-5(4)(0)",
+        "SC-10(0)",
+        "SC-28(0)",
+        "SC-28(1)(0)"
+      ],
+      "controls_count": 33
+    },
+    {
+      "component_id": "is.instance",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(c)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "SC-7(10)(0)",
+        "CM-8(3)(a)",
+        "SC-13(0)",
+        "SC-28(0)",
+        "SC-28(1)(0)"
+      ],
+      "controls_count": 13
+    },
+    {
+      "component_id": "is.subnet",
+      "controls": [
+        "AC-4(0)",
+        "SC-7(a)",
+        "SC-7(c)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "SC-7(10)(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(b)"
+      ],
+      "controls_count": 9
+    },
+    {
+      "component_id": "apprapp",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 7
+    },
+    {
+      "component_id": "directlink",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "CP-7(a)",
+        "CP-7(1)(0)",
+        "CP-8(0)",
+        "CP-8(2)(0)"
+      ],
+      "controls_count": 11
+    },
+    {
+      "component_id": "event-notifications",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 7
+    },
+    {
+      "component_id": "is.flow-log-collector",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 7
+    },
+    {
+      "component_id": "is.snapshot",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 7
+    },
+    {
+      "component_id": "is.volume",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "SC-13(0)",
+        "SC-28(0)",
+        "SC-28(1)(0)"
+      ],
+      "controls_count": 10
+    },
+    {
+      "component_id": "schematics",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "SC-13(0)",
+        "SC-28(0)",
+        "SC-28(1)(0)"
+      ],
+      "controls_count": 10
+    },
+    {
+      "component_id": "secrets-manager",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "IA-5(g)",
+        "SI-2(a)",
+        "SI-5(a)"
+      ],
+      "controls_count": 10
+    },
+    {
+      "component_id": "is.instance-group",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)",
+        "CP-10(0)",
+        "SC-6(0)",
+        "IA-4(b)",
+        "IA-4(c)"
+      ],
+      "controls_count": 11
+    },
+    {
+      "component_id": "is.bare-metal-server",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 7
+    },
+    {
+      "component_id": "is.vpn-server",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 7
+    },
+    {
+      "component_id": "is.dedicated-host",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 7
+    },
+    {
+      "component_id": "is.floating-ip",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 7
+    },
+    {
+      "component_id": "is.backup-policy",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 7
+    },
+    {
+      "component_id": "is.image",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 7
+    },
+    {
+      "component_id": "is.placement-group",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 7
+    },
+    {
+      "component_id": "is.key",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 7
+    },
+    {
+      "component_id": "is.endpoint-gateway",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 7
+    },
+    {
+      "component_id": "iam-access-management",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 7
+    },
+    {
+      "component_id": "compliance",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 7
+    },
+    {
+      "component_id": "codeengine",
+      "controls": [
+        "AC-4(0)",
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(a)",
+        "SC-7(b)",
+        "SC-7(4)(a)",
+        "SC-7(5)(0)"
+      ],
+      "controls_count": 7
+    },
+    {
+      "component_id": "toolchain",
+      "controls": [
+        "CM-2(0)",
+        "CM-2(1)(a)",
+        "CM-2(1)(b)",
+        "CM-2(1)(c)",
+        "CM-2(2)(0)",
+        "CM-2(3)(0)",
+        "CM-3(e)",
+        "CM-3(f)",
+        "CM-3(2)(0)",
+        "CM-8(a)",
+        "CM-8(b)",
+        "CM-8(1)(0)",
+        "CM-8(2)(0)",
+        "SA-3(a)",
+        "SA-3(d)",
+        "SA-8(0)",
+        "SA-10(a)",
+        "SA-10(b)",
+        "SA-15(a)",
+        "SI-2(a)",
+        "SI-2(d)",
+        "SI-2(2)(0)",
+        "SI-7(0)",
+        "CM-3(a)",
+        "CM-3(b)",
+        "CM-3(c)",
+        "CM-3(d)",
+        "CM-3(g)",
+        "CM-4(0)",
+        "CM-6(c)",
+        "CM-6(d)",
+        "CM-6(1)(0)",
+        "CM-9(a)",
+        "CM-9(b)",
+        "CM-9(c)",
+        "SA-10(c)",
+        "SA-10(d)",
+        "SI-2(b)",
+        "SI-2(c)",
+        "CM-4(1)(0)",
+        "CM-7(1)(a)",
+        "CM-10(1)(0)",
+        "RA-5(a)",
+        "RA-5(b)",
+        "RA-5(c)",
+        "RA-5(d)",
+        "RA-5(1)(0)",
+        "RA-5(2)(0)",
+        "RA-5(3)(0)",
+        "SA-10(e)",
+        "SA-10(1)(0)",
+        "CM-6(a)",
+        "CM-6(b)",
+        "CM-7(b)",
+        "CM-5(0)",
+        "CM-9(d)",
+        "SI-10(0)"
+      ],
+      "controls_count": 57
+    },
+    {
+      "component_id": "internet-svcs",
+      "controls": [
+        "CM-7(a)",
+        "CM-7(b)",
+        "SC-7(4)(c)",
+        "SC-8(0)",
+        "SC-8(1)(0)",
+        "SC-11(0)",
+        "SC-13(0)",
+        "SC-23(0)"
+      ],
+      "controls_count": 8
+    },
+    {
+      "component_id": "hyperp-dbaas-postgresql",
+      "controls": [
+        "SC-13(0)",
+        "SC-28(0)",
+        "SC-28(1)(0)"
+      ],
+      "controls_count": 3
+    },
+    {
+      "component_id": "hyperp-dbaas-mongodb",
+      "controls": [
+        "SC-13(0)",
+        "SC-28(0)",
+        "SC-28(1)(0)"
+      ],
+      "controls_count": 3
+    }
   ]
 }
