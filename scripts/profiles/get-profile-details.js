@@ -99,6 +99,7 @@ const getProfileDetails = async () => {
                         // add assessment details to parameters
                         const uniqueAssessments = uniqBy(assessments, 'assessment_id');
                         const defaultParameters = profileData.default_parameters;
+                        const uniqueComponents = uniqBy(assessments, 'component_name');
 
                         map(defaultParameters, (parameter) => {
                             const assessments = filter(uniqueAssessments, { assessment_id: parameter.assessment_id });
@@ -117,6 +118,7 @@ const getProfileDetails = async () => {
 
                             }
                         });
+
 
                         // add parameter details to assessments
                         map(uniqueAssessments, (assessment) => {
@@ -149,8 +151,10 @@ const getProfileDetails = async () => {
                         console.log('Profile name: ', profileName);
                         console.log('Profile version: ', profileData.profile_version);
                         console.log('Controls count: ', profileData.controls_count);
+                        console.log('Total specifications count: ', size(specifications));
                         console.log('Total assessments count: ', size(assessments));
                         console.log('Unique assessments count: ', size(uniqueAssessments));
+                        console.log('Unique components count: ', size(uniqueComponents));
                         console.log('Assessments with parameters count: ', size(uniqBy(defaultParameters, 'assessment_id')));
 
                         const data = {
