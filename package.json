@@ -5,7 +5,8 @@
   "scripts": {
     "get:rules": "node ./scripts/rules/get-rules",
     "get:profiles": "node ./scripts/profiles/get-profiles",
-    "get:profileDetails": "node ./scripts/profiles/get-profile-details ./output/get-profile-details.json"
+    "get:profileDetails": "node ./scripts/profiles/get-profile-details ./output/get-profile-details.json",
+    "get:BillingDetails": "node ./scripts/profiles/get-billing-details ./output/get-billing-details.json"
   },
   "engines": {
     "node": "^18.x",
