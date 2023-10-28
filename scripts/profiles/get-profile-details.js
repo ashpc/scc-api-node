@@ -9,7 +9,8 @@ let converter = require('json-2-csv');
 // common util
 
 const common = require('../../helpers/common');
-const { isEmpty, flatten, map, uniqBy, size, filter, get, find, keys, mapKeys, isEqual, uniq } = require('lodash');
+const { isEmpty, uniqBy, size } = require('lodash');
+const { getAllSpecifications, getAllAssessments, getAssessmentsControlsMapping, getAssessmentsParametersMapping, getDefaultParametersMapping } = require('../../helpers/utils');
 
 // environment variables
 const apiKey = process.env['IAM_API_KEY'];
@@ -56,104 +57,19 @@ const getProfileDetails = async () => {
                 return common.getData(options, (profileData, profileError) => {
                     if (!profileError) {
 
-                        console.log('...Flattening the Control Specifications');
-                        // getting list of specifications 
-                        const specifications = flatten(map(profileData.controls, (control) => {
-                            map(control.control_specifications, (specification) => {
-                                specification.control_name = control.control_name;
-                            })
-                            return [
-                                ...control.control_specifications,
-                            ];
-                        }));
 
-                        console.log('.....Flattening the Assessments');
-                        // getting list of assessments 
-                        const assessments = flatten(map(specifications, (specification) => (
-                            map(specification.assessments, (assessment) => ({
-                                component_id: specification.component_id,
-                                component_name: specification.component_name,
-                                controls: [specification.control_name],
-                                ...assessment
-                            }))
-                        )));
-                        console.log('........Mapping the controls to assessments');
-                        // getting controls for the assessments
-                        map(specifications, (controlSpecification) => {
-                            map(controlSpecification.assessments, (assessment) => {
-                                map(assessments, (evaluation) => {
-                                    if (assessment.assessment_id === evaluation.assessment_id) {
-                                        // check if control is already added
-                                        const controlPresent = find(evaluation.control_details, { control_name: controlSpecification.control_name });
-                                        if (!isEmpty(evaluation.control_details)) {
-                                            isEmpty(controlPresent) && evaluation.control_details.push({ control_name: controlSpecification.control_name });
-                                        } else {
-                                            evaluation.control_details = [{
-                                                control_name: controlSpecification.control_name
-                                            }];
-                                        }
-                                    }
-                                    // list of unique control names only
-                                    evaluation.controls = keys(mapKeys(evaluation.control_details, 'control_name'));
-                                });
-                            });
-                        });
+                        let specifications = getAllSpecifications(profileData);
+                        let assessments = getAssessmentsControlsMapping(specifications, getAllAssessments(specifications));
+
 
                         // add assessment details to parameters
-                        const uniqueAssessments = uniqBy(assessments, 'assessment_id');
-                        const defaultParameters = profileData.default_parameters;
+                        let { defaultParameters, uniqueAssessments } = getDefaultParametersMapping(profileData.default_parameters, uniqBy(assessments, 'assessment_id'));
                         const uniqueComponents = uniqBy(assessments, 'component_name');
 
-                        map(defaultParameters, (parameter) => {
-                            const assessments = filter(uniqueAssessments, { assessment_id: parameter.assessment_id });
-                            if (isEmpty(assessments)) {
-                                console.log('ERROR: Missing assessment');
-                            } else {
-                                // ideally 1 parameter per assessment but this will handle more than 1
-                                map(assessments, (assessment) => {
-                                    if (isEqual(parameter.parameter_name, assessment.parameter_name)) {
-                                        parameter.component_id = get(assessment, 'component_id', null);
-                                        parameter.component_name = get(assessment, 'component_name', null);
-                                        parameter.assessment_description = get(assessment, 'assessment_description', null);
-                                        parameter.assessment_type = get(assessment, 'assessment_type', null);
-                                    }
-                                });
 
-                            }
-                        });
-
-                        let components = [];
-                        console.log('..............Mapping the parameters values to assessments');
-                        // add parameter details to assessments
-                        map(uniqueAssessments, (assessment) => {
-                            delete assessment.control_details;
-                            if (isEmpty(components)) {
-                                components = [{ component_id: assessment.component_id, controls: assessment.controls }]
-                            } else {
-                                components.push({ component_id: assessment.component_id, controls: assessment.controls });
-                            }
-                            if (!isEmpty(assessment.parameters)) {
-                                map(assessment.parameters, (assessmentParameter) => {
-                                    const parameters = filter(defaultParameters, { parameter_name: get(assessmentParameter, 'parameter_name', null) });
-                                    if (isEmpty(parameters)) {
-                                        console.log('ERROR: Missing parameter');
-                                    } else {
-                                        map(parameters, (parameter) => {
-                                            if (parameter.parameter_name === assessmentParameter.parameter_name) {
-                                                assessmentParameter.parameter_default_value = parameter.parameter_default_value;
-                                            }
-                                        });
-                                    }
-                                });
-                            }
-                            // get components to controls mapping 
-                            map(components, (component) => {
-                                if (component.component_id === assessment.component_id) {
-                                    component.controls = uniq(component.controls.concat(assessment.controls))
-                                    component.controls_count = size(component.controls);
-                                }
-                            });
-                        });
+                        const parameterMapping = getAssessmentsParametersMapping(uniqueAssessments, defaultParameters)
+                        let components = parameterMapping.components;
+                        uniqueAssessments = parameterMapping.uniqueAssessments
 
                         // file name creation
                         const profileName = profileData.profile_name;
