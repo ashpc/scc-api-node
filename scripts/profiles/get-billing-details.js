@@ -85,7 +85,7 @@ const getBillingDetails = async () => {
                         console.log('===============================');
                         console.log('.... Billing Cost Calculation Assumptions ...');
                         console.log('.... Assumption 1: total_resources are all the resources that are scanned by this profile ....');
-                        console.log('.... Assumption 2: all evaluations have pass or fail and no unable to perform ....');
+                        console.log('.... Assumption 2: all evaluations have  compliant or not compliant only and no unable to perform ....');
                         console.log('.... Assumption 3: individual resources cost is not included in this calculation ....');
                         console.log('.................................................');
                         console.log('....Cost per scan based on the formula: 0.013 * unique_assessments_count * total_resources ...');
@@ -122,7 +122,7 @@ const getBillingDetails = async () => {
                         logger.write('===============================' + '\n');
                         logger.write('.... Billing Cost Calculation Assumptions ...' + '\n');
                         logger.write('.... Assumption 1: total_resources are all the resources that are scanned by this profile ....' + '\n');
-                        logger.write('.... Assumption 2: all evaluations have pass or fail and no unable to perform ....' + '\n');
+                        logger.write('.... Assumption 2: all evaluations have compliant or not compliant only and no unable to perform ....' + '\n');
                         logger.write('.... Assumption 3: individual resources cost is not included in this calculation ....' + '\n');
                         logger.write('.................................................' + '\n');
                         logger.write('....Cost per scan based on the formula: 0.013 * unique_assessments_count * total_resources ...' + '\n');
