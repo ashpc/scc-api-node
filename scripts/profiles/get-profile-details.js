@@ -9,7 +9,7 @@ let converter = require('json-2-csv');
 // common util
 
 const common = require('../../helpers/common');
-const { isEmpty, uniqBy, size } = require('lodash');
+const { isEmpty, uniqBy, size, map } = require('lodash');
 const { getAllSpecifications, getAllAssessments, getAssessmentsControlsMapping, getAssessmentsParametersMapping, getDefaultParametersMapping } = require('../../helpers/utils');
 
 // environment variables
@@ -19,8 +19,6 @@ const sccRegion = process.env['SCC_REGION'] || 'us-south';
 const sccInstanceId = process.env['SCC_INSTANCE_ID'];
 const sccBaseURL = `https://${sccRegion}.compliance.cloud.ibm.com/instances/${sccInstanceId}/v3`
 const profileId = process.env['npm_config_profile_id'];
-
-
 
 const getProfileDetails = async () => {
 
@@ -64,12 +62,13 @@ const getProfileDetails = async () => {
 
                         // add assessment details to parameters
                         let { defaultParameters, uniqueAssessments } = getDefaultParametersMapping(profileData.default_parameters, uniqBy(assessments, 'assessment_id'));
-                        const uniqueComponents = uniqBy(assessments, 'component_name');
 
 
                         const parameterMapping = getAssessmentsParametersMapping(uniqueAssessments, defaultParameters)
                         let components = parameterMapping.components;
-                        uniqueAssessments = parameterMapping.uniqueAssessments
+                        uniqueAssessments = parameterMapping.uniqueAssessments;
+                        const uniqueComponents = uniqBy(components, 'component_id');
+
 
                         // file name creation
                         const profileName = profileData.profile_name;
@@ -93,6 +92,14 @@ const getProfileDetails = async () => {
                         console.log('Unique components count: ', size(uniqueComponents));
                         console.log('Assessments with parameters count: ', size(uniqBy(defaultParameters, 'assessment_id')));
 
+                        let componentsControlsCount = [];
+                        map(uniqueComponents, (component) => {
+                            componentsControlsCount.push({
+                                component_id: component.component_id,
+                                controls_count: size(component.controls)
+                            })
+                        });
+
                         const data = {
                             profile_data: profileData,
                             unique_assessments: uniqueAssessments,
@@ -100,7 +107,8 @@ const getProfileDetails = async () => {
                             assessments_count: size(assessments),
                             unique_assessments_count: size(uniqueAssessments),
                             assessments_default_parameters: profileData.default_parameters,
-                            unique_components: uniqBy(components, 'component_id')
+                            unique_components: uniqueComponents,
+                            componentsControlsCount: componentsControlsCount
                         };
                         const finalData = JSON.stringify(data, null, 2);
 
