@@ -71,7 +71,16 @@ const getProfiles = async (startToken) => {
             };
 
             const fileName = profilesType.replace(/[^a-z]/g, "-");
-            const filePath = `./output/get-${fileName}-profiles.json`;
+
+            const folderName = './output/profiles';
+            try {
+                if (!fs.existsSync(folderName)) {
+                    fs.mkdirSync(folderName);
+                }
+            } catch (err) {
+                console.error(err);
+            }
+            const filePath = `${folderName}/get-${fileName}-profiles.json`;
 
             return common.getData(options, (profilesData, profilesError) => {
                 if (!profilesError) {

@@ -73,11 +73,18 @@ const getProfileDetails = async () => {
                         // file name creation
                         const profileName = profileData.profile_name;
                         const fileName = profileName.toLowerCase().replace(/[^a-z]/g, "-") + '-' + profileData.profile_version;
+                        const folderName = './output/profiles';
+                        try {
+                            if (!fs.existsSync(folderName)) {
+                                fs.mkdirSync(folderName);
+                            }
+                        } catch (err) {
+                            console.error(err);
+                        }
                         const jsonFilePath = `./output/get-${fileName}-details.json`;
                         const csvAsIsFilePath = `./output/get-${fileName}-details-as-is.csv`;
                         const csvAssessmentsFilePath = `./output/get-${fileName}-assessments-details.csv`;
                         const csvParametersFilePath = `./output/get-${fileName}-parameters-details.csv`;
-
 
                         console.log('===============================');
                         console.log('....Printing Information...');

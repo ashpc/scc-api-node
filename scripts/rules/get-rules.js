@@ -8,7 +8,7 @@ const qs = require('querystring');
 // common util
 
 const common = require('../../helpers/common');
-const { isEqual, size, get } = require('lodash');
+const { isEqual, size, get, map, isEmpty } = require('lodash');
 
 // environment variables
 const apiKey = process.env['IAM_API_KEY'];
@@ -17,6 +17,7 @@ const sccRegion = process.env['SCC_REGION'] || 'us-south';
 const sccInstanceId = process.env['SCC_INSTANCE_ID'];
 const sccBaseURL = `https://${sccRegion}.compliance.cloud.ibm.com/instances/${sccInstanceId}/v3`
 const rulesType = process.env['npm_config_rule_type'] || 'all';
+const componentsMappingPrinting = process.env['npm_config_components_mapping'];
 
 let rulesList = [];
 
@@ -71,7 +72,15 @@ const getRules = async (startToken) => {
             };
 
             const fileName = rulesType.replace(/[^a-z]/g, "-");
-            const filePath = `./output/get-${fileName}-rules.json`;
+            const folderName = './output/rules';
+            try {
+                if (!fs.existsSync(folderName)) {
+                    fs.mkdirSync(folderName);
+                }
+            } catch (err) {
+                console.error(err);
+            }
+            const filePath = `${folderName}/get-${fileName}-rules.json`;
 
             return common.getData(options, (rulesData, rulesError) => {
                 if (!rulesError) {
@@ -79,14 +88,31 @@ const getRules = async (startToken) => {
                     if (get(rulesData, 'next.start', null)) {
                         getRules(rulesData.next.start);
                     } else {
-                        const finalData = JSON.stringify({ total_count: size(rulesList), rules: rulesList }, null, 2);
+                        const componentsMapping = {}
+                        map(rulesList, (rule) => {
+                            if (!componentsMapping[rule.target.service_name]) {
+                                componentsMapping[rule.target.service_name] = { rules: [rule] };
+                            } else {
+                                componentsMapping[rule.target.service_name].rules.push(rule);
+                            }
+                        });
                         console.log('=============START Details==================');
                         console.log('Total rules count: ', size(rulesList));
                         console.log('Type of rules in the response: ', rulesType);
+                        if (!isEmpty(componentsMappingPrinting)) {
+                            console.log('.........Components rules mapping==================');
+                            map(componentsMapping, (mapping, key) => {
+                                mapping.rules_count = size(mapping.rules)
+                                console.log(key, ',', mapping.rules_count, ',')
+                            });
+                        }
+
+                        const finalData = JSON.stringify({ total_count: size(rulesList), rules: rulesList, components_mapping: componentsMapping }, null, 2);
+
                         fs.writeFile(filePath, finalData, (err) => {
                             if (err) throw err;
                             console.log('Data written to file at ', filePath);
-                            console.log('============END==================');
+                            console.log('============END Details==================');
                         });
                     }
                 }

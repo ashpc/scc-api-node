@@ -16,24 +16,24 @@ This repo will have scripts to get entities using the SCC APIs that can be found
 
 #### Steps to get Rules are listed below  <a id="rules"></a>
 
-- To get list of all rules in the instance run `npm run get:rules`. The output is stored in the `output` folder under this name `get-all-rules.json`
-- To get list of all predefined rules in the instance run `npm run get:rules --rule_type=predefined`.  The output is stored in the `output` folder under this name `get-predefined-rules.json`
-- To get list of all custom rules in the instance run `npm run get:rules --rule_type=custom`.  The output is stored in the `output` folder under this name `get-custom-rules.json`
+- To get list of all rules in the instance run `npm run get:rules`. The output is stored in the `output/rules` folder under this name `get-all-rules.json`
+- To get list of all predefined rules in the instance run `npm run get:rules --rule_type=predefined`.  The output is stored in the `output/rules` folder under this name `get-predefined-rules.json`
+- To get list of all custom rules in the instance run `npm run get:rules --rule_type=custom`.  The output is stored in the `output/rules` folder under this name `get-custom-rules.json`
 
 ---
 
 #### Steps to get Profiles are listed below <a id="proifles"></a>
 
-- To get list of all profiles in the instance run `npm run get:profiles`. The output is stored in the `output` folder under this name `get-all-profiles.json`
-- To get list of all predefined profiles in the instance run `npm run get:profiles --profile_type=predefined`.  The output is stored in the `output` folder under this name `get-predefined-profiles.json`
-- To get list of all custom profiles in the instance run `npm run get:profiles --profile_type=custom`.  The output is stored in the `output` folder under this name `get-custom-profiles.json`
+- To get list of all profiles in the instance run `npm run get:profiles`. The output is stored in the `output/profiles` folder under this name `get-all-profiles.json`
+- To get list of all predefined profiles in the instance run `npm run get:profiles --profile_type=predefined`.  The output is stored in the `output/profiles` folder under this name `get-predefined-profiles.json`
+- To get list of all custom profiles in the instance run `npm run get:profiles --profile_type=custom`.  The output is stored in the `output/profiles` folder under this name `get-custom-profiles.json`
 
 ---
 
 #### Steps to get Profile details are listed below <a id="profile-details"></a>
 
 - To get a profile details in the instance run `npm run get:profileDetails --profile_id=<PROFILE_ID>`. Replace `<PROFILE_ID>` with the profile you need details for that can be found in `npm run get:profiles`.
-- The JSON output is stored in the `output` folder under the name of the profile and version. For example if the Profile is IBM Cloud Framework for Financial Services version v1.5.0 the output will be in `./output/get-ibm-cloud-framework-for-financial-services-1.5.0-details.json`.
+- The JSON output is stored in the `output/profiles` folder under the name of the profile and version. For example if the Profile is IBM Cloud Framework for Financial Services version v1.5.0 the output will be in `./output/profiles/get-ibm-cloud-framework-for-financial-services-1.5.0-details.json`.
 - This output has the following details
   - Full profile details under `profile_data`
   - Unique assessments under `unique_assessments`
