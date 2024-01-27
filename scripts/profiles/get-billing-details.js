@@ -77,7 +77,7 @@ const getBillingDetails = async () => {
 
                         // file name creation
                         const profileName = profileData.profile_name;
-                        const fileName = profileName.toLowerCase().replace(/[^a-z]/g, "-") + '-' + profileData.profile_version;
+                        const fileName = profileName.toLowerCase().replace(/\s+/g, "-") + '-' + profileData.profile_version;
                         const jsonFilePath = `./output/get-${fileName}-billing-details.json`;
                         const txtFilePath = `./output/get-${fileName}-billing-details.txt`;
 

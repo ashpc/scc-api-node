@@ -8,7 +8,8 @@ const qs = require('querystring');
 // common util
 
 const common = require('../../helpers/common');
-const { isEqual, size, get } = require('lodash');
+const { isEqual, size, get, map, groupBy, keys } = require('lodash');
+const { getAllSpecifications } = require('../../helpers/utils');
 
 // environment variables
 const apiKey = process.env['IAM_API_KEY'];
@@ -17,6 +18,7 @@ const sccRegion = process.env['SCC_REGION'] || 'us-south';
 const sccInstanceId = process.env['SCC_INSTANCE_ID'];
 const sccBaseURL = `https://${sccRegion}.compliance.cloud.ibm.com/instances/${sccInstanceId}/v3`
 const profilesType = process.env['npm_config_profile_type'] || 'all';
+const groupByEnvironment = process.env['npm_config_group_by_env'];
 
 let profilesList = [];
 
@@ -88,6 +90,82 @@ const getProfiles = async (startToken) => {
                     if (get(profilesData, 'next.start', null)) {
                         getProfiles(profilesData.next.start);
                     } else {
+                        // Group by environment and store the output into right env folder
+                        if (groupByEnvironment) {
+                            map(profilesList, async (profile) => {
+                                await common.getData({ ...options, url: `${sccBaseURL}/profiles/${profile.id}` }, (profileDetails, profileError) => {
+                                    if (profileError) {
+                                        console.log('Error in fetching profile details for ', profile.id);
+                                    } else {
+                                        // get environment from controlspec
+                                        const envs = groupBy(getAllSpecifications(profileDetails), 'environment');
+                                        profile.environments = keys(envs);
+
+                                        // file name creation
+                                        const profileName = profile.profile_name;
+                                        const fileName = profileName.toLowerCase().replace(/\s+/g, "-") + '-' + profile.profile_version;
+                                        const folderName = './output/profiles';
+                                        const EnvfolderName = './output/profiles/environments';
+
+                                        const IBMfolderName = './output/profiles/environments/ibm-cloud';
+                                        const AWSfolderName = './output/profiles/environments/aws-cloud';
+                                        const AZUREfolderName = './output/profiles/environments/azure-cloud';
+                                        const OthersfolderName = './output/profiles/environments/others';
+
+                                        try {
+                                            if (!fs.existsSync(folderName)) {
+                                                fs.mkdirSync(folderName);
+                                            }
+                                            if (!fs.existsSync(EnvfolderName)) {
+                                                fs.mkdirSync(EnvfolderName);
+                                            }
+                                            if (!fs.existsSync(IBMfolderName)) {
+                                                fs.mkdirSync(IBMfolderName);
+                                            }
+                                            if (!fs.existsSync(AWSfolderName)) {
+                                                fs.mkdirSync(AWSfolderName);
+                                            }
+                                            if (!fs.existsSync(AZUREfolderName)) {
+                                                fs.mkdirSync(AZUREfolderName);
+                                            }
+                                            if (!fs.existsSync(OthersfolderName)) {
+                                                fs.mkdirSync(OthersfolderName);
+                                            }
+                                        } catch (err) {
+                                            console.error(err);
+                                        }
+                                        const finalData = JSON.stringify(data, null, 2);
+                                        // write into individual folders
+                                        if (envs['ibm-cloud']) {
+                                            const jsonFilePath = `${IBMfolderName}/get-${fileName}-details.json`;
+                                            fs.writeFile(jsonFilePath, finalData, (err) => {
+                                                if (err) throw err;
+                                                console.log('JSON Data written to file at ', jsonFilePath);
+                                            });
+                                        } else if (envs['aws-cloud']) {
+                                            const jsonFilePath = `${AWSfolderName}/get-${fileName}-details.json`;
+                                            fs.writeFile(jsonFilePath, finalData, (err) => {
+                                                if (err) throw err;
+                                                console.log('JSON Data written to file at ', jsonFilePath);
+                                            });
+                                        } else if (envs['azure-cloud']) {
+                                            const jsonFilePath = `${AZUREfolderName}/get-${fileName}-details.json`;
+                                            fs.writeFile(jsonFilePath, finalData, (err) => {
+                                                if (err) throw err;
+                                                console.log('JSON Data written to file at ', jsonFilePath);
+                                            });
+                                        } else {
+                                            const jsonFilePath = `${OthersfolderName}/get-${fileName}-details.json`;
+                                            fs.writeFile(jsonFilePath, finalData, (err) => {
+                                                if (err) throw err;
+                                                console.log('JSON Data written to file at ', jsonFilePath);
+                                            });
+                                        }
+                                    }
+                                });
+                            });
+                        }
+
                         const finalData = JSON.stringify({ total_count: size(profilesList), profiles: profilesList }, null, 2);
                         console.log('=============START Details==================');
                         console.log('Total profiles count: ', size(profilesList));

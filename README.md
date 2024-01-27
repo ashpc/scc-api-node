@@ -27,6 +27,7 @@ This repo will have scripts to get entities using the SCC APIs that can be found
 - To get list of all profiles in the instance run `npm run get:profiles`. The output is stored in the `output/profiles` folder under this name `get-all-profiles.json`
 - To get list of all predefined profiles in the instance run `npm run get:profiles --profile_type=predefined`.  The output is stored in the `output/profiles` folder under this name `get-predefined-profiles.json`
 - To get list of all custom profiles in the instance run `npm run get:profiles --profile_type=custom`.  The output is stored in the `output/profiles` folder under this name `get-custom-profiles.json`
+- To get list of profiles in the instance grouped by environment then run `npm run get:profiles --profile_type=predefined --group_by_env=true`.  The output is stored in the `output/profiles/environments/<environment-name>` folder under this name `get-<profile-name>-<version>-details.json`
 
 ---
 
