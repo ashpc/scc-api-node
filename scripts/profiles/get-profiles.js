@@ -19,6 +19,7 @@ const sccInstanceId = process.env['SCC_INSTANCE_ID'];
 const sccBaseURL = `https://${sccRegion}.compliance.cloud.ibm.com/instances/${sccInstanceId}/v3`
 const profilesType = process.env['npm_config_profile_type'] || 'all';
 const groupByEnvironment = process.env['npm_config_group_by_env'];
+const latest = process.env['npm_config_latest'];
 
 let profilesList = [];
 
@@ -30,6 +31,9 @@ const getProfiles = async (startToken) => {
         profilesUrl += `&profile_type=custom`
     } else if (profilesType === 'predefined') {
         profilesUrl += `&profile_type=predefined`
+    }
+    if (latest === 'true') {
+        profilesUrl += '&latest=true';
     }
 
 
